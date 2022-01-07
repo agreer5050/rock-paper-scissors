@@ -6,63 +6,74 @@ function computerPlay(){
     return Math.floor(Math.random() * 3) + 1;
 }
 
-function getPlayerSelectionValue(playerSelection){
-    if(playerSelection.toLowerCase() == "rock"){
-        return rock;
-    }
-    if(playerSelection.toLowerCase() == "paper"){
-        return paper;
-    }
-    if(playerSelection.toLowerCase() == "scissors"){
-        return scissors;
-    }
-    return 0;
-}
-
 function playRound(playerSelection, computerSelection) {
-    playerSelectionValue = getPlayerSelectionValue(playerSelection);
-    switch (playerSelectionValue) {
+    let resultsBuffer = document.querySelector("div.results");
+    switch (playerSelection) {
         case rock:
+            console.log(playerSelection);
             switch (computerSelection) {
                 case rock:
-                    return "It's a tie! You both chose rock.";
+                    resultsBuffer.innerHTML = "It's a tie! You both chose rock.!!!";
+                    return;
                 case paper:
-                    return "You lose! Paper beats rock.";
+                    resultsBuffer.innerHTML = "You lose! Paper beats rock.";
+                    return;
                 case scissors:
-                    return "You win! Rock beats scissors.";
+                    resultsBuffer.innerHTML = "You win! Rock beats scissors.";
+                    return;
             }
+            return;
         
         case paper:
+            console.log(playerSelection);
             switch (computerSelection) {
                 case rock:
-                    return "You win! Paper beats rock.";
+                    resultsBuffer.innerHTML = "You win! Paper beats rock.";
+                    return;
                 case paper:
-                    return "It's a tie! You both chose paper.";
+                    resultsBuffer.innerHTML = "It's a tie! You both chose paper.";
+                    return;
                 case scissors:
-                    return "You lose! Scissors beats paper.";
+                    resultsBuffer.innerHTML = "You lose! Scissors beats paper.";
+                    return;
             }
+            return;
 
         case scissors:
+            console.log(playerSelection);
             switch (computerSelection) {
                 case rock:
-                    return "You lose! Rock beats scissors.";
+                    resultsBuffer.innerHTML = "You lose! Rock beats scissors.";
+                    return;
                 case paper:
-                    return "You win! Scissors beats paper.";
+                    resultsBuffer.innerHTML = "You win! Scissors beats paper.";
+                    return;
                 case scissors:
-                    return "It's a tie! You both chose scissors.";
+                    resultsBuffer.innerHTML = "It's a tie! You both chose scissors.";
+                    return;
             }
-        default:
-            return "Invalid player selection";
+            return;
     }
 
+}
+
+function playRock(e){
+    const computerSelection = computerPlay();
+    playRound(rock, computerSelection);
+}
+function playPaper(e){
+    const computerSelection = computerPlay();
+    playRound(paper, computerSelection);
+}
+function playScissors(e){
+    const computerSelection = computerPlay();
+    playRound(scissors, computerSelection);
 }
 
 function game(){
-    for(let i = 0; i < 5; i++){
-        const playerSelection = prompt("Rock, paper, or scissors?");
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    document.querySelector(`button[data-key="Rock"]`).addEventListener('click', function(){playRock()});
+    document.querySelector(`button[data-key="Paper"]`).addEventListener('click', function(){playPaper()});
+    document.querySelector(`button[data-key="Scissors"]`).addEventListener('click', function(){playScissors()});
 }
   
 game();

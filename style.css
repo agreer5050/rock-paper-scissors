@@ -1,0 +1,38 @@
+html {
+    font-size: 10px;
+    background: url('./river.jpg') bottom center;
+    background-size: cover;
+  }
+  
+  body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex: auto;
+    min-height: 50vh;
+    align-items: center;
+    padding: 100px;
+    column-gap: 50px;
+  }
+
+  .block {
+    display: block;
+    width: 100%;
+    background-color: #84a598;
+    padding: 14px 28px;
+    font-size: 32px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .results {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    background-color: #84a598;
+  }
